@@ -10,7 +10,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Farm
 -- -----------------------------------------------------
-
+CREATE SCHEMA Farm;
+USE Farm;
 -- -----------------------------------------------------
 -- Table `b_type`
 -- -----------------------------------------------------
@@ -65,7 +66,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `status` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `status col` VARCHAR(45) NOT NULL,
+  `status_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -75,7 +76,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `objective` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `objectivecol` VARCHAR(45) NOT NULL,
+  `objective_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -111,7 +112,7 @@ ENGINE = InnoDB;
 -- Table `animal`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `animal` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `status_id` INT NOT NULL,
   `breed_id` INT NOT NULL,
   `objective_id` INT NOT NULL,
@@ -190,7 +191,7 @@ ENGINE = InnoDB;
 -- Table `month`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `month` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `month_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -203,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `hours_register` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `worker_id` INT NOT NULL,
   `month_id` INT NOT NULL,
-  `year` YEAR(1) NOT NULL,
+  `year` YEAR(4) NOT NULL,
   `hours_registercol` INT NOT NULL,
   PRIMARY KEY (`id`, `worker_id`, `month_id`),
   INDEX `fk_hours_register_worker1_idx` (`worker_id` ASC) VISIBLE,
