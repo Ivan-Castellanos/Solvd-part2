@@ -1,5 +1,9 @@
 package com.solvd.laba.tables;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "city")
 public class City {
     private int id;
     private String name;
@@ -16,6 +20,7 @@ public class City {
         return name;
     }
 
+    @XmlElement(name = "city")
     public void setName(String name) {
         this.name = name;
     }

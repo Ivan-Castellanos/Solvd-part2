@@ -4,6 +4,13 @@ public class Status {
     private int id;
     private String status_name;
 
+    @Override
+    public String toString() {
+        return "Status{" +
+                "status_name='" + status_name + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

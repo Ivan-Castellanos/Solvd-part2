@@ -9,6 +9,42 @@ public class Animal {
     private int age;
     private int weight;
 
+    public Animal(int id, int building) {
+        this.id = id;
+        this.status = status;
+        this.breed = this.breed;
+        this.building = this.building;
+        this.objective = objective;
+        this.age = age;
+        this.weight = weight;
+    }
+
+    public Animal(int id) {
+        this.id = id;
+    }
+
+    public Animal() {
+    }
+
+    public Animal(int id, int age, int weight) {
+        this.id = id;
+        this.age = age;
+        this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", status=" + status.getStatus_name() +
+                ", breed=" + breed.getBreed_name() +
+                ", building=" + building.getName() +
+                ", objective=" + objective.getObjective() +
+                ", age=" + age +
+                ", weight=" + weight +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

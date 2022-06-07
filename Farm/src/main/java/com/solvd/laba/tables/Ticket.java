@@ -1,7 +1,5 @@
 package com.solvd.laba.tables;
 
-import com.solvd.laba.tables.Building;
-
 import java.util.Date;
 
 public class Ticket {

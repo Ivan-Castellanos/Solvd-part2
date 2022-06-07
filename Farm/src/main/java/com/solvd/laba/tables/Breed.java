@@ -5,6 +5,21 @@ public class Breed {
     private Specie specie;
     private String breed_name;
 
+    public Breed(int id) {
+        this.id = id;
+    }
+
+    public Breed() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Breed{" +
+                "breed_name='" + breed_name + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

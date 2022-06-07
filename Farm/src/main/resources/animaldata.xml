@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<animals>
+    <animal id="1">
+        <status>alive</status>
+        <breed>cow</breed>
+        <objective>to slaugther</objective>
+        <building>happy butcher</building>
+        <age>3</age>
+        <weight>500</weight>
+    </animal>
+    <animal id="2">
+        <status>alive</status>
+        <breed>Chicken</breed>
+        <objective>to slaugther</objective>
+        <building>los pollos hermanos</building>
+        <age>1</age>
+        <weight>30</weight>
+    </animal>
+    <animal id="3">
+        <status>slaugthered</status>
+        <breed>cow</breed>
+        <objective>to sell</objective>
+        <building>supermarket</building>
+        <age>3</age>
+        <weight>470</weight>
+    </animal>
+</animals>

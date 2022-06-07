@@ -1,11 +1,18 @@
 package com.solvd.laba.dao.jdbc.mysql.impo;
 
-import com.solvd.laba.tables.Status;
 import com.solvd.laba.dao.IStatusDAO;
+import com.solvd.laba.tables.Status;
+
+import java.util.List;
 
 public class StatusDAO implements IStatusDAO {
     @Override
     public Status getEntityById(long id) {
+        return null;
+    }
+
+    @Override
+    public List<Status> viewTable() {
         return null;
     }
 

@@ -8,6 +8,14 @@ public class Position {
     private int pay_per_hour;
     private List<Worker> workersAssigned;
 
+    public Position(int id, String position_name) {
+        this.id = id;
+        this.position_name = position_name;
+    }
+
+    public Position() {
+    }
+
     public int getId() {
         return id;
     }
