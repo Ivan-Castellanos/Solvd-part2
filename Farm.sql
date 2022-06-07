@@ -10,8 +10,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Farm
 -- -----------------------------------------------------
-CREATE SCHEMA Farm;
-USE Farm;
+CREATE SCHEMA Ivan_Castellanos_Farm;
+USE Ivan_Castellanos_Farm;
 -- -----------------------------------------------------
 -- Table `b_type`
 -- -----------------------------------------------------
@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS `building` (
   `address_number` INT NULL,
   `email` VARCHAR(45) NULL,
   PRIMARY KEY (`id`, `b_type_id`, `city_id`),
-  INDEX `fk_building_b_type1_idx` (`b_type_id` ASC) VISIBLE,
-  INDEX `fk_building_city1_idx` (`city_id` ASC) VISIBLE,
+  INDEX `fk_building_b_type1_idx` (`b_type_id` ASC),
+  INDEX `fk_building_city1_idx` (`city_id` ASC),
   CONSTRAINT `fk_building_b_type1`
     FOREIGN KEY (`b_type_id`)
     REFERENCES `b_type` (`id`)
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `breed` (
   `specie_id` INT NOT NULL,
   `breed_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`, `specie_id`),
-  INDEX `fk_breed_specie1_idx` (`specie_id` ASC) VISIBLE,
+  INDEX `fk_breed_specie1_idx` (`specie_id` ASC),
   CONSTRAINT `fk_breed_specie1`
     FOREIGN KEY (`specie_id`)
     REFERENCES `specie` (`id`)
@@ -120,10 +120,10 @@ CREATE TABLE IF NOT EXISTS `animal` (
   `age` INT(2) NOT NULL,
   `weight` INT NOT NULL,
   PRIMARY KEY (`id`, `status_id`, `breed_id`, `objective_id`, `building_id`),
-  INDEX `fk_animal_building1_idx` (`building_id` ASC) VISIBLE,
-  INDEX `fk_animal_status1_idx` (`status_id` ASC) VISIBLE,
-  INDEX `fk_animal_objective1_idx` (`objective_id` ASC) VISIBLE,
-  INDEX `fk_animal_breed1_idx` (`breed_id` ASC) VISIBLE,
+  INDEX `fk_animal_building1_idx` (`building_id` ASC),
+  INDEX `fk_animal_status1_idx` (`status_id` ASC),
+  INDEX `fk_animal_objective1_idx` (`objective_id` ASC),
+  INDEX `fk_animal_breed1_idx` (`breed_id` ASC),
   CONSTRAINT `fk_animal_building1`
     FOREIGN KEY (`building_id`)
     REFERENCES `building` (`id`)
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `phone_number` (
   `building_id` INT NOT NULL,
   `number` INT NOT NULL,
   PRIMARY KEY (`id`, `building_id`),
-  INDEX `fk_phone_number_building1_idx` (`building_id` ASC) VISIBLE,
+  INDEX `fk_phone_number_building1_idx` (`building_id` ASC),
   CONSTRAINT `fk_phone_number_building1`
     FOREIGN KEY (`building_id`)
     REFERENCES `building` (`id`)
@@ -207,8 +207,8 @@ CREATE TABLE IF NOT EXISTS `hours_register` (
   `year` YEAR(4) NOT NULL,
   `hours_registercol` INT NOT NULL,
   PRIMARY KEY (`id`, `worker_id`, `month_id`),
-  INDEX `fk_hours_register_worker1_idx` (`worker_id` ASC) VISIBLE,
-  INDEX `fk_hours_register_month1_idx` (`month_id` ASC) VISIBLE,
+  INDEX `fk_hours_register_worker1_idx` (`worker_id` ASC),
+  INDEX `fk_hours_register_month1_idx` (`month_id` ASC),
   CONSTRAINT `fk_hours_register_worker1`
     FOREIGN KEY (`worker_id`)
     REFERENCES `worker` (`id`)
@@ -230,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `building` INT NOT NULL,
   `date` DATE NOT NULL,
   PRIMARY KEY (`id`, `building`),
-  INDEX `fk_ticket_building1_idx` (`building` ASC) VISIBLE,
+  INDEX `fk_ticket_building1_idx` (`building` ASC),
   CONSTRAINT `fk_ticket_building1`
     FOREIGN KEY (`building`)
     REFERENCES `building` (`id`)
@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `meat_cut` (
   `cut_name` VARCHAR(45) NOT NULL,
   `price_per_kg` INT NOT NULL,
   PRIMARY KEY (`id`, `specie_id`),
-  INDEX `fk_meat_cut_specie1_idx` (`specie_id` ASC) VISIBLE,
+  INDEX `fk_meat_cut_specie1_idx` (`specie_id` ASC),
   CONSTRAINT `fk_meat_cut_specie1`
     FOREIGN KEY (`specie_id`)
     REFERENCES `specie` (`id`)
@@ -266,8 +266,8 @@ CREATE TABLE IF NOT EXISTS `item` (
   `meat_cut_id` INT NOT NULL,
   `kg` INT NOT NULL,
   PRIMARY KEY (`id`, `ticket_ticket_id`, `meat_cut_id`),
-  INDEX `fk_item_ticket1_idx` (`ticket_ticket_id` ASC) VISIBLE,
-  INDEX `fk_item_meat_cut1_idx` (`meat_cut_id` ASC) VISIBLE,
+  INDEX `fk_item_ticket1_idx` (`ticket_ticket_id` ASC),
+  INDEX `fk_item_meat_cut1_idx` (`meat_cut_id` ASC),
   CONSTRAINT `fk_item_ticket1`
     FOREIGN KEY (`ticket_ticket_id`)
     REFERENCES `ticket` (`id`)
@@ -288,8 +288,8 @@ CREATE TABLE IF NOT EXISTS `worker_has_position` (
   `worker_id` INT NOT NULL,
   `position_id` INT NOT NULL,
   PRIMARY KEY (`worker_id`, `position_id`),
-  INDEX `fk_worker_has_position_position1_idx` (`position_id` ASC) VISIBLE,
-  INDEX `fk_worker_has_position_worker1_idx` (`worker_id` ASC) VISIBLE,
+  INDEX `fk_worker_has_position_position1_idx` (`position_id` ASC),
+  INDEX `fk_worker_has_position_worker1_idx` (`worker_id` ASC),
   CONSTRAINT `fk_worker_has_position_worker1`
     FOREIGN KEY (`worker_id`)
     REFERENCES `worker` (`id`)
@@ -312,8 +312,8 @@ CREATE TABLE IF NOT EXISTS `building_has_worker` (
   `building_city_id` INT NOT NULL,
   `worker_id` INT NOT NULL,
   PRIMARY KEY (`building_id`, `building_b_type_id`, `building_city_id`, `worker_id`),
-  INDEX `fk_building_has_worker_worker1_idx` (`worker_id` ASC) VISIBLE,
-  INDEX `fk_building_has_worker_building1_idx` (`building_id` ASC, `building_b_type_id` ASC, `building_city_id` ASC) VISIBLE,
+  INDEX `fk_building_has_worker_worker1_idx` (`worker_id` ASC),
+  INDEX `fk_building_has_worker_building1_idx` (`building_id` ASC, `building_b_type_id` ASC, `building_city_id` ASC),
   CONSTRAINT `fk_building_has_worker_building1`
     FOREIGN KEY (`building_id` , `building_b_type_id` , `building_city_id`)
     REFERENCES `building` (`id` , `b_type_id` , `city_id`)
