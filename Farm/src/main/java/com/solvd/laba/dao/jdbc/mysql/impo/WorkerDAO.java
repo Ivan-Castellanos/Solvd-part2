@@ -27,7 +27,7 @@ public class WorkerDAO implements IWorkerDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
+    public void removeEntity(Worker entity) {
 
     }
 }

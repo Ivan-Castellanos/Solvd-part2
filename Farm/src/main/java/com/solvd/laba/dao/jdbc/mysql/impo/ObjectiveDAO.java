@@ -27,7 +27,7 @@ public class ObjectiveDAO implements IObjectiveDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
+    public void removeEntity(Objective entity) {
 
     }
 }

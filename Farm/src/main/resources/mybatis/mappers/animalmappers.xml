@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.solvd.laba.dao.IAnimalDAO">
+    <resultMap id="AnimalResultMap" type="com.solvd.laba.tables.Animal" autoMapping="false">
+        <result column="id" property="id"/>
+        <result column="status" property="status"/>
+        <result column="breed" property="breed"/>
+        <result column="building" property="building"/>
+        <result column="objective" property="objective"/>
+        <result column="age" property="age"/>
+        <result column="weight" property="weight"/>
+    </resultMap>
+
+    <select id="getById" resultMap="PlaneResultMap">
+        SELECT * FROM animal WHERE id = #{id}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM animal WHERE id = #{id}
+    </delete>
+
+    <selectAll>
+        SELECT * FROM animal
+    </selectAll>
+</mapper>

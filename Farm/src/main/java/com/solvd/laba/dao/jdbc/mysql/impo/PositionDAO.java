@@ -27,7 +27,7 @@ public class PositionDAO implements IPositionDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
+    public void removeEntity(Position entity) {
 
     }
 }

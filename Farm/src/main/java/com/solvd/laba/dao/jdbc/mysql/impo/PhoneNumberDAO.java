@@ -27,7 +27,7 @@ public class PhoneNumberDAO implements IPhoneNumberDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
+    public void removeEntity(PhoneNumbers entity) {
 
     }
 }

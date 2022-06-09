@@ -17,7 +17,16 @@ public class AnimalDAO implements IAnimalDAO {
 
     @Override
     public Animal getEntityById(long id) throws SQLException {
-        return null;
+        Connection c = connection.getConnection();
+        String query = "Select * from animal WHERE id = ?";
+        try (PreparedStatement ps = c.prepareStatement(query)) {
+            ps.setLong(1, id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return new Animal(rs.getInt("id"), rs.getInt("age"), rs.getInt("weight"));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     @Override
@@ -63,8 +72,18 @@ public class AnimalDAO implements IAnimalDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
-
+    public void removeEntity(long id) throws SQLException {
+        Connection c = connection.getConnection();
+        String query = "Delete from animal where ID = ?";
+        try (PreparedStatement ps = c.prepareStatement(query);) {
+            ps.setLong(1, id);
+            ps.executeUpdate();
+            System.out.println("Animal: " + id + " was deleted from the database");
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            connection.releaseConnection(c);
+        }
     }
 
     @Override

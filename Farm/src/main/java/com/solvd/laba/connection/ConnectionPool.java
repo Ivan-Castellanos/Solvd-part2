@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class ConnectionPool implements IConnectionPool {
     private static final Properties props = new Properties();
-    private static final int INITIAL_POOL_SIZE = 80;
+    private static final int INITIAL_POOL_SIZE = 1;
     private static List<Connection> connectionPool = new ArrayList<>(INITIAL_POOL_SIZE);
     private static ConnectionPool INSTANCE = null;
 

@@ -6,6 +6,9 @@ public class MeatCuts {
     private int price_per_kg;
     private String cut_name;
 
+    public MeatCuts(int id, int specie_id, String cut_name, int price_per_kg) {
+    }
+
     public int getId() {
         return id;
     }

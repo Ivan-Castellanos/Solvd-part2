@@ -27,7 +27,7 @@ public class StatusDAO implements IStatusDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
+    public void removeEntity(Status entity) {
 
     }
 }

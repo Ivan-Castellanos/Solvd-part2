@@ -13,6 +13,9 @@ public class Breed {
 
     }
 
+    public Breed(int id, int specie_id, String breed_name) {
+    }
+
     @Override
     public String toString() {
         return "Breed{" +

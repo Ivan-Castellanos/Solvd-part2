@@ -6,6 +6,14 @@ public class Item {
     private MeatCuts meatCut;
     private int kg;
 
+    public Item(int id, int kg) {
+        this.id = id;
+        this.kg = kg;
+    }
+
+    public Item(int id, int specie_id, String cut_name, int price_per_kg) {
+    }
+
     public int getId() {
         return id;
     }

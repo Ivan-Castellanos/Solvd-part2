@@ -27,7 +27,7 @@ public class TicketDAO implements ITicketDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
+    public void removeEntity(Ticket entity) {
 
     }
 }

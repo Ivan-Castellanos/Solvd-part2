@@ -27,7 +27,7 @@ public class SpecieDAO implements ISpecieDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
+    public void removeEntity(Specie entity) {
 
     }
 }

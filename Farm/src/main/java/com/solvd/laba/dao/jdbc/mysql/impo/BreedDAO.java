@@ -12,16 +12,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BreedDAO implements IBreedDAO {
-    ConnectionPool conection = new ConnectionPool();
+    ConnectionPool connection = new ConnectionPool();
 
     @Override
-    public Breed getEntityById(long id) {
-        return null;
+    public Breed getEntityById(long id) throws SQLException {
+        Connection c = connection.getConnection();
+        String query = "Select * from breed WHERE id = ?";
+        try (PreparedStatement ps = c.prepareStatement(query)) {
+            ps.setLong(1, id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return new Breed(rs.getInt("id"), rs.getInt("specie_id"), rs.getString("breed_name"));
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
     }
 
     @Override
     public List<Breed> viewTable() throws SQLException {
-        Connection c = conection.getConnection();
+        Connection c = connection.getConnection();
         List<Breed> breeds = new ArrayList<>();
         String query = "Select * from Breed";
         try (PreparedStatement ps = c.prepareStatement(query)) {
@@ -33,13 +42,24 @@ public class BreedDAO implements IBreedDAO {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return breeds;
     }
 
     @Override
-    public void saveEntity(Breed entity) {
-
+    public void saveEntity(Breed entity) throws SQLException {
+        Connection c = connection.getConnection();
+        String query = "INSERT INTO breed (id, specie_id, breed_name) VALUES (?,?,?)";
+        try (PreparedStatement ps = c.prepareStatement(query)) {
+            ps.setObject(1, entity.getId());
+            ps.setObject(2, entity.getSpecie().getId());
+            ps.setObject(3, entity.getBreed_name());
+            ps.executeUpdate();
+            System.out.println("Breed: " + entity.getId() + " was saved in the database");
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            connection.releaseConnection(c);
+        }
 
     }
 
@@ -49,8 +69,18 @@ public class BreedDAO implements IBreedDAO {
     }
 
     @Override
-    public void removeEntity(long entity) {
-
+    public void removeEntity(long id) throws SQLException {
+        Connection c = connection.getConnection();
+        String query = "Delete from breed where ID = ?";
+        try (PreparedStatement ps = c.prepareStatement(query);) {
+            ps.setLong(1, id);
+            ps.executeUpdate();
+            System.out.println("Breed: " + id + " was deleted from the database");
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            connection.releaseConnection(c);
+        }
     }
 
     @Override

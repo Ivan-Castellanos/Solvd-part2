@@ -39,6 +39,10 @@ public class Building {
     public Building() {
     }
 
+    public Building(int id, String name) {
+    }
+
+
     public int getId() {
         return id;
     }

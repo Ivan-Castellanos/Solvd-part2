@@ -1,5 +1,6 @@
 package com.solvd.laba.jackson;
 
+import com.solvd.laba.tables.City;
 import com.solvd.laba.tables.Worker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,5 +11,9 @@ public class JacksonRunner {
     public static void main(String[] args) {
         Worker worker = JacksonHandler.readWorker();
         JacksonHandler.writeWorker(worker);
+
+
+        City city = JacksonHandler.readCity();
+        JacksonHandler.writeCity(city);
     }
 }
